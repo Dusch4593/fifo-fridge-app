@@ -28,4 +28,4 @@ expiration date).
 
 [usage information here]
 
-# **License
+# **License**
