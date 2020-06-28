@@ -1,3 +1,0 @@
-class FoodItemSerializer
-
-end
