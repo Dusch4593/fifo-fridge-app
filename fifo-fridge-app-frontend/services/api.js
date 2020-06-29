@@ -5,8 +5,8 @@ class API {
       .then(res => res.json())
       .then(fridgeData => {
         for(let fridge of fridgeData) {
-          const {name, capacity} = fridge;
-          new Fridge(name, capacity)
+          const {name, capacity, food_items} = fridge;
+          new Fridge(name, capacity, food_items);
       }})
   };
 
@@ -21,7 +21,7 @@ class API {
         'expiration_date': e.target.food_item.expiration_date.value,
         'quantity': e.target.food_item.quantity.value,
         'created_at': e.target.food_item.created_at.value
-      };
+      }
     };
 
     fetch(`http://localhost:3000/fridges`, {
