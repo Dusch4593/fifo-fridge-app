@@ -1,28 +1,34 @@
 class Fridge {
-  constructor(name, capacity) {
-    this.name = name;
-    this.capacity = capacity;
-    this.renderFridge();
+  constructor(name, capacity, foodItems) {
+    if(foodItems.length <= capacity) {
+      this.name = name;
+      this.capacity = capacity;
+      this.foodItems = foodItems;
+      this.renderFridge();
+    } else {
+      throw new Error("foodItems list exceded fridge's max capacity. Please try again with a shorter list.")
+    };
   };
 
   fridgeCardHTML() {
     return `
     <h2>${this.name}</h2>
     <h4>Capacity: ${this.capacity}</h4>
+    <br />
+
+    <h4>List of Food Items</h4>
+    <ul id="food-item-list">
+    ${for(item of this.foodItems) {
+      let foodItemList = document.getElementById("food-item-list");
+      let foodItemCard = document.createElement("div");
+      foodItemCard.setAttribute("class", "food-item-card");
+      debugger;
+    }}
+    </ul>
     `
   };
 
   // delete our fridges
-
-  // render all fridges to the index page
-  static loadFridges() {
-    fetch(`http://localhost:3000/fridges`)
-      .then(res => res.json())
-      .then(fridgeData => {
-        for(let fridge of fridgeData) {
-          let newFridge = new Fridge(fridge.name, fridge.capacity);
-      }})
-  };
 
 
 
@@ -31,7 +37,7 @@ class Fridge {
     const fridgeCard = document.createElement("div");
     fridgeCard.setAttribute("class", "fridge-card");
     fridgeCard.id = this.id;
-    debugger;
+    fridgeCard.innerHTML += this.fridgeCardHTML();
   };
 };
 
