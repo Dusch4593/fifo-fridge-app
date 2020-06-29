@@ -1,19 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  loadFridges();
+  API.loadFridges();
+  document.getElementById('fridge-form').addEventListener('submit', API.addFridge);
 });
-
-
-function loadFridges() {
-  fetch(`http://localhost:3000/fridges`)
-    .then(res => res.json())
-    .then(fridgeData => {
-      for(let fridge of fridgeData) {
-      renderFridge(fridge);
-    }})
-};
-
-function renderFridge(f) {
-  let fridgeCard = document.createElement("div");
-  fridgeCard.setAttribute("class", "fridge-card");
-  debugger
-}
