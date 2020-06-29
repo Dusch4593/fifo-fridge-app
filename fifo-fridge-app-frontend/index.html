@@ -9,8 +9,31 @@
 </head>
 
 <body>
-
+  <h1>Welcome to FIFO Fridge!</h1>
+  <h3>Create a New Fridge</h3>
+  <form id="fridge-form">
+    <input type="text" name="name" placeholder="name" />
+    <br />
+    <input type="number" name="capacity" placeholder="capacity" min=0 />
+    <br />
+    <br />
+    <strong>Would you like to add a Food Item?</strong>
+    <br>
+    <input type="text" name="name" placeholder="name" />
+    <br />
+    <input type="text" name="foodGroup" placeholder="food group" />
+    <br />
+    <input type="text" name="expiration_date" placeholder="expiration_date (##/##/####)" />
+    <br />
+    <input type="number" name="quantity" placeholder="quantity" min=0 />
+    <br />
+    <br />
+    <input type="submit" value="Submit" />
+  </form>
+  <div id="fridge-container"></div>
 </body>
 <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+<script type="application/javascript" src="src/fridge.js" charset="UTF-8"></script>
+<script type="application/javascript" src="src/food_item.js" charset="UTF-8"></script>
 
 </html>
