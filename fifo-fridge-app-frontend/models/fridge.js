@@ -18,12 +18,7 @@ class Fridge {
 
     <h4>List of Food Items</h4>
     <ul id="food-item-list">
-    ${for(item of this.foodItems) {
-      let foodItemList = document.getElementById("food-item-list");
-      let foodItemCard = document.createElement("div");
-      foodItemCard.setAttribute("class", "food-item-card");
-      debugger;
-    }}
+
     </ul>
     `
   };
@@ -38,6 +33,7 @@ class Fridge {
     fridgeCard.setAttribute("class", "fridge-card");
     fridgeCard.id = this.id;
     fridgeCard.innerHTML += this.fridgeCardHTML();
+    fridgeContainer.appendChild(fridgeCard);
   };
 };
 

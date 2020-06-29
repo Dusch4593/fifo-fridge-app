@@ -12,15 +12,15 @@ class API {
 
   static addFridge(e) {
     e.preventDefault();
+    debugger;
     let data = {
-      'name': e.target.name.value,
-      'capacity': e.target.capacity.value,
+      'name': e.target.elements['name'][0].value,
+      'capacity': e.target.elements['capacity'].value,
       'food_items_attributes': {
-        'name': e.target.food_item.name.value,
-        'foodGroup': e.target.food_item.food_group.value,
-        'expiration_date': e.target.food_item.expiration_date.value,
-        'quantity': e.target.food_item.quantity.value,
-        'created_at': e.target.food_item.created_at.value
+        'name': e.target.elements['name'][1].value,
+        'foodGroup': e.target.elements['foodGroup'].value,
+        'expiration_date': e.target.elements['expiration_date'].value,
+        'quantity': e.target.elements['quantity'].value
       }
     };
 
