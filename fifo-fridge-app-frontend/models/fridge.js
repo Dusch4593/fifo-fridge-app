@@ -1,6 +1,6 @@
 class Fridge {
   constructor(name, capacity, foodItems) {
-    if(foodItems.length <= capacity) {
+    if(Object.keys(foodItems).length <= capacity) {
       this.name = name;
       this.capacity = capacity;
       this.foodItems = foodItems;
@@ -14,14 +14,10 @@ class Fridge {
     return `
     <h2>${this.name}</h2>
     <h4>Capacity: ${this.capacity}</h4>
-    <br />
-
-    <h4>List of Food Items</h4>
-    <ul id="food-item-list">
-
-    </ul>
-    `
+     ` + FoodItem.foodItemsCardHTML(this.foodItems) + `<br />`;
   };
+
+
 
   // delete our fridges
 
@@ -36,6 +32,3 @@ class Fridge {
     fridgeContainer.appendChild(fridgeCard);
   };
 };
-
-
-// link to a show page and show code
