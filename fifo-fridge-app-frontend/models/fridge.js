@@ -1,6 +1,7 @@
 class Fridge {
-  constructor(name, capacity, foodItems) {
+  constructor(name, capacity, foodItems, id=null) {
     if(Object.keys(foodItems).length <= capacity) {
+      this.id = id;
       this.name = name;
       this.capacity = capacity;
       this.foodItems = foodItems;
@@ -13,22 +14,27 @@ class Fridge {
   fridgeCardHTML() {
     return `
     <h2>${this.name}</h2>
-    <h4>Capacity: ${this.capacity}</h4>
-     ` + FoodItem.foodItemsCardHTML(this.foodItems) + `<br />`;
+    <h4>Capacity: ${this.capacity}</h4>` +
+    FoodItem.foodItemsCardHTML(this.foodItems);
   };
-
-
-
-  // delete our fridges
-
 
 
   renderFridge() {
     const fridgeContainer = document.getElementById("fridge-container");
     const fridgeCard = document.createElement("div");
     fridgeCard.setAttribute("class", "fridge-card");
-    fridgeCard.id = this.id;
+    fridgeCard.setAttribute("id", this.id);
     fridgeCard.innerHTML += this.fridgeCardHTML();
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.setAttribute("class", "fridge-delete-btn");
+    deleteBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      API.deleteFridge(parseInt(e.target.parentElement.id))
+    });
+    fridgeCard.appendChild(deleteBtn);
+
     fridgeContainer.appendChild(fridgeCard);
   };
 };

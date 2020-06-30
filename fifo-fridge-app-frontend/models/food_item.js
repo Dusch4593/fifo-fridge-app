@@ -19,7 +19,7 @@ class FoodItem {
       foodItemCard.setAttribute("class", "food-item-card");
       foodItemCard.innerHTML = `
         <strong>${item.name}</strong> <br />
-        <strong>Food Group: </strong> ${item.food_group} <br />
+        <strong>Food Group: </strong> ${item.food_group[0].toUpperCase() + item.food_group.slice(1)} <br />
         <strong>Expiration Date: </strong> ${item.expiration_date} <br />
         <strong>Quantity: </strong> ${item.quantity} <br /><br />
       `

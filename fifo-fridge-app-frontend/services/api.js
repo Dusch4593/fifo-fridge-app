@@ -5,14 +5,13 @@ class API {
       .then(res => res.json())
       .then(fridgeData => {
         for(let fridge of fridgeData) {
-          const {name, capacity, food_items} = fridge;
-          new Fridge(name, capacity, food_items);
+          const {name, capacity, food_items, id} = fridge;
+          new Fridge(name, capacity, food_items, id);
       }})
   };
 
   static addFridge(e) {
     e.preventDefault();
-    debugger;
     let data = {
       'name': e.target.name[0].value,
       'capacity': parseInt(e.target.capacity.value),
@@ -33,10 +32,16 @@ class API {
     })
       .then(res => res.json())
       .then(fridge => {
-        debugger;
-        const {name, capacity, food_items} = fridge;
-        new Fridge(name, capacity, food_items);
+        const {name, capacity, food_items, id} = fridge;
+        new Fridge(name, capacity, food_items, id);
         document.getElementById('fridge-form').reset();
       })
+  };
+
+  // delete our fridges
+  static deleteFridge(fridgeID) {
+    fetch(`http://localhost:3000/fridges/${fridgeID}`, {method: "DELETE"});
+    document.getElementById(fridgeID).remove();
+    return "The fridge was deleted!"
   };
 };
