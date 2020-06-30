@@ -14,14 +14,14 @@ class API {
     e.preventDefault();
     debugger;
     let data = {
-      'name': e.target.elements['name'][0].value,
-      'capacity': e.target.elements['capacity'].value,
-      'food_items_attributes': {
-        'name': e.target.elements['name'][1].value,
-        'foodGroup': e.target.elements['foodGroup'].value,
-        'expiration_date': e.target.elements['expiration_date'].value,
-        'quantity': e.target.elements['quantity'].value
-      }
+      'name': e.target.name[0].value,
+      'capacity': parseInt(e.target.capacity.value),
+      'food_items_attributes': [{
+        'name': e.target.name[1].value,
+        'food_group': e.target.food_group.value,
+        'expiration_date': e.target.expiration_date.value,
+        'quantity': parseInt(e.target.quantity.value)
+      }]
     };
 
     fetch(`http://localhost:3000/fridges`, {
@@ -33,8 +33,9 @@ class API {
     })
       .then(res => res.json())
       .then(fridge => {
-        const {name, capacity} = fridge;
-        new Fridge(name, capacity);
+        debugger;
+        const {name, capacity, food_items} = fridge;
+        new Fridge(name, capacity, food_items);
         document.getElementById('fridge-form').reset();
       })
   };
