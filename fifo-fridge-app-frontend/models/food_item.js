@@ -10,6 +10,8 @@ class FoodItem {
     let foodItemsContainer = document.createElement("div");
     foodItemsContainer.setAttribute("class", "food-items-container");
 
+    items.sort((a, b) => parseInt(a.expiration_date.replace('/', '')) - parseInt(b.expiration_date.replace('/', '')))
+
     for(let item of items) {
       const {name, food_group, expiration_date, quantity} = item;
       let newFoodItem = new FoodItem(name, food_group, expiration_date, quantity);
@@ -19,7 +21,7 @@ class FoodItem {
         <strong>${item.name}</strong> <br />
         <strong>Food Group: </strong> ${item.food_group} <br />
         <strong>Expiration Date: </strong> ${item.expiration_date} <br />
-        <strong>Quantity: </strong> ${item.food_group} <br /><br />
+        <strong>Quantity: </strong> ${item.quantity} <br /><br />
       `
       foodItemsContainer.appendChild(foodItemCard);
     };
