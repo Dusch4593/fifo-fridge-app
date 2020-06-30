@@ -1,5 +1,5 @@
 class Fridge {
-  constructor(name, capacity, foodItems, id=null) {
+  constructor(name, capacity=0, foodItems, id=null) {
     if(Object.keys(foodItems).length <= capacity) {
       this.id = id;
       this.name = name;
