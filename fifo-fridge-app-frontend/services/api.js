@@ -44,4 +44,45 @@ class API {
     document.getElementById(fridgeID).remove();
     return "The fridge was deleted!"
   };
+
+  static deleteFoodItem(foodItemID) {
+    debugger;
+  };
+
+
+  //add food item
+  static addFoodItem(fridgeCard, fridgeID) {
+    let newFoodItemForm = fridgeCard.getElementsByTagName('form')[0];
+    newFoodItemForm.style.display="block";
+
+    newFoodItemForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let data = {
+        'food_items_attributes': [{
+          'name': e.target.name.value,
+          'food_group': e.target.food_group.value,
+          'expiration_date': e.target.expiration_date.value,
+          'quantity': parseInt(e.target.quantity.value)
+        }]
+      };
+      fetch(`http://localhost:3000/fridges/${fridgeID}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(result => {
+
+        const currentFridge = document.getElementById(result.id)
+        const foodItemsContainer = currentFridge.querySelector("#food-items-container");
+        let newFoodItem = result.food_items[result.food_items.length-1];
+        FoodItem.addItemToFridge(currentFridge, newFoodItem)
+      });
+    });
+
+
+
+  };
 };
