@@ -6,15 +6,20 @@ class FoodItem {
     this.quantity = quantity;
   };
 
-  static foodItemsCardHTML(items) {
-    let foodItemsContainer = document.createElement("div");
-    foodItemsContainer.setAttribute("class", "food-items-container");
-
+  static todaysDate() {
     let today = new Date()
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
+    return today;
+  }
+
+  static foodItemsCardHTML(items) {
+    let foodItemsContainer = document.createElement("div");
+    foodItemsContainer.setAttribute("class", "food-items-container");
+
+
 
     items.sort((a, b) => parseInt(a.expiration_date.replace('/', '')) - parseInt(b.expiration_date.replace('/', '')))
 
@@ -25,7 +30,7 @@ class FoodItem {
       foodItemCard.setAttribute("class", "food-item-card");
 
 
-      if(parseInt(item.expiration_date.replace('/','') < parseInt(today.replace('/', '')))) {
+      if(parseInt(item.expiration_date.replace('/','') < parseInt(this.todaysDate().replace('/', '')))) {
         foodItemCard.innerHTML += `
           <strong>${item.name} (EXPIRED)</strong> <br />
           <strong>Food Group: </strong> ${item.food_group[0].toUpperCase() + item.food_group.slice(1)} <br />
