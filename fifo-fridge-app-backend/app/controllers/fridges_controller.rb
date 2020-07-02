@@ -2,7 +2,6 @@ class FridgesController < ApplicationController
   before_action :set_fridge, only: [:show, :update, :destroy]
   def index
     @fridges = Fridge.all
-    # render json: FridgeSerializer.new(@fridges).to_serialized_json
     render json: @fridges.as_json(include: {food_items: {only:[:id, :name, :food_group, :expiration_date, :quantity]}})
   end
 
