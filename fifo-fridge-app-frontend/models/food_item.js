@@ -84,7 +84,6 @@ class FoodItem {
     deleteBtn.setAttribute("class", "food-item-delete-btn");
     deleteBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      debugger;
       API.deleteFoodItem(parseInt(e.target.parentElement.id))
     });
 

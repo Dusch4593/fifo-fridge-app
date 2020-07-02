@@ -42,11 +42,13 @@ class API {
   static deleteFridge(fridgeID) {
     fetch(`http://localhost:3000/fridges/${fridgeID}`, {method: "DELETE"});
     document.getElementById(fridgeID).remove();
-    return "The fridge was deleted!"
+    return "The fridge was deleted!";
   };
 
   static deleteFoodItem(foodItemID) {
-    debugger;
+    fetch(`http://localhost:3000/food_items/${foodItemID}`, {method: "DELETE"});
+    document.getElementById(foodItemID.toString()).remove();
+    return "The food item was deleted!";
   };
 
 
