@@ -25,7 +25,7 @@ class Fridge {
     const fridgeContainer = document.getElementById("fridge-container");
     const fridgeCard = document.createElement("div");
     fridgeCard.setAttribute("class", "fridge-card");
-    fridgeCard.setAttribute("id", this.id);
+    fridgeCard.setAttribute("data-fridge-id", this.id);
     fridgeCard.innerHTML += this.fridgeCardHTML();
 
     // create "food-items-container <div> for current fridgeCard"
@@ -81,7 +81,7 @@ class Fridge {
     deleteBtn.setAttribute("class", "fridge-delete-btn");
     deleteBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      API.deleteFridge(parseInt(e.target.parentElement.id))
+      API.deleteFridge(parseInt(e.target.parentElement.getAttribute('data-fridge-id')))
     });
     fridgeCard.appendChild(deleteBtn);
 

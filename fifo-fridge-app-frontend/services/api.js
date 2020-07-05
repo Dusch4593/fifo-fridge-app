@@ -41,7 +41,7 @@ class API {
   // delete our fridges
   static deleteFridge(fridgeID) {
     fetch(`http://localhost:3000/fridges/${fridgeID}`, {method: "DELETE"});
-    document.getElementById(fridgeID).remove();
+    document.getElementsByClassName('fridge-card')[fridgeID-1].remove();
     return "The fridge was deleted!";
   };
 
@@ -76,8 +76,7 @@ class API {
       })
       .then(res => res.json())
       .then(result => {
-
-        const currentFridge = document.getElementById(result.id)
+        const currentFridge = document.getElementsByClassName('fridge-card')[result.id-1]
         const foodItemsContainer = currentFridge.querySelector("#food-items-container");
         let newFoodItem = result.food_items[result.food_items.length-1];
         FoodItem.addItemToFridge(currentFridge, newFoodItem)
