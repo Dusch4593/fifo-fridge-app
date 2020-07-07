@@ -41,6 +41,15 @@ input {
   width: 40%;
 }
 
+.add-food-item-btn {
+  margin-left: 0.5em;
+  color: #fff;
+  background-color: #27a8f7;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  font-weight: bold;
+}
+
 .fridge-delete-btn {
   margin-left: 0.5em;
   color: #fff;
@@ -66,4 +75,14 @@ input {
   padding: 1em;
   margin: 1em auto;
   width: 60%;
+}
+
+.food-item-delete-btn {
+  margin-top: 1.5em;
+  color: #fff;
+  background-color: red;
+  padding: 0.25em;
+  border-radius: 0.35em;
+  font-weight: bold;
+  font-size: 13px;
 }

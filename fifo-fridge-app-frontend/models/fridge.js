@@ -32,6 +32,7 @@ class Fridge {
     // button comes with event listener that invokes API.addFoodItem() when clicked
     const addFoodItem = document.createElement('button');
     addFoodItem.innerText = "Add Food Item"
+    addFoodItem.setAttribute("class", "add-food-item-btn")
     addFoodItem.addEventListener("click", (e) => {
       e.preventDefault();
       API.addFoodItem(fridgeCard, this.id);

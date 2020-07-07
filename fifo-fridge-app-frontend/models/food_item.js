@@ -46,7 +46,7 @@ class FoodItem {
       foodItemCard.innerHTML += this.foodItemsCardHTML(item);
 
       const deleteBtn = document.createElement("button");
-      deleteBtn.innerText = "X";
+      deleteBtn.innerText = "Delete Item";
       deleteBtn.setAttribute("class", "food-item-delete-btn");
 
       deleteBtn.addEventListener("click", (e) => {
@@ -81,7 +81,7 @@ class FoodItem {
 
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "X";
+    deleteBtn.innerText = "Delete Item";
     deleteBtn.setAttribute("class", "food-item-delete-btn");
     deleteBtn.addEventListener("click", (e) => {
       e.preventDefault();
