@@ -45,7 +45,14 @@ class Fridge {
     newFoodItemForm.innerHTML = `
     <input type="text" name="name" placeholder="food name" />
     <br />
-    <input type="text" name="food_group" placeholder="food group" />
+    <select name="food-group-options" id="food-group-options">
+      <option value="Choose a Food Group" selected>Choose A Food Group</option>
+      <option value="Fruits">Fruits</option>
+      <option value="Vegetables">Vegetables</option>
+      <option value="Grains">Grains</option>
+      <option value="Protein Foods">Protein Foods (Meats, Poultry, Seafood, etc)</option>
+      <option value="Dairy">Dairy</option>
+    </select>
     <br />
     <input type="text" name="expiration_date" placeholder="expiration date (##/##/####)" />
     <br />

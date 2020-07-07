@@ -23,6 +23,11 @@ input[type="submit"] {
   font-weight: bold;
 }
 
+#food-group-options {
+  width: 60%;
+  padding: 0.3em;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #27a8f7;
   opacity: 1; /* Firefox */

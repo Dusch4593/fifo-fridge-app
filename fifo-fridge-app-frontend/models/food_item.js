@@ -26,7 +26,7 @@ class FoodItem {
   // returns markup for a single item of a foodItemsCard <div>
   static foodItemsCardHTML(item) {
     return `
-    <strong>${item.name}</strong>
+    <strong>${item.name}</strong> <br />
     <strong>Food Group: </strong>${item.food_group} <br />
     <strong>Expiration Date: </strong>${item.expiration_date} <br />
     <strong>Quantity: </strong>${item.quantity} <br />
@@ -73,7 +73,8 @@ class FoodItem {
     foodItemCard.setAttribute("class", "food-item-card");
 
     foodItemCard.innerHTML += `
-      <strong>${item.name}</strong> <br />
+      <h4>${item.name}</h4>
+      <br>
       <strong>Food Group: </strong> ${item.food_group[0].toUpperCase() + item.food_group.slice(1)} <br />
       <strong>Expiration Date: </strong> ${item.expiration_date} <br />
       <strong>Quantity: </strong> ${item.quantity} <br /><br />

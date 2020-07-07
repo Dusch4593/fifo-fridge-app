@@ -12,12 +12,13 @@ class API {
 
   static addFridge(e) {
     e.preventDefault();
+    let foodGroupSelectBox = e.target.getElementsByTagName("select")[0]
     let data = {
       'name': e.target.name[0].value,
       'capacity': parseInt(e.target.capacity.value),
       'food_items_attributes': [{
         'name': e.target.name[1].value,
-        'food_group': e.target.food_group.value,
+        'food_group': foodGroupSelectBox.options[foodGroupSelectBox.selectedIndex].value,
         'expiration_date': e.target.expiration_date.value,
         'quantity': parseInt(e.target.quantity.value)
       }]
@@ -59,10 +60,11 @@ class API {
 
     newFoodItemForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      let foodGroupSelectBox = e.target.getElementsByTagName("select")[0]
       let data = {
         'food_items_attributes': [{
           'name': e.target.name.value,
-          'food_group': e.target.food_group.value,
+          'food_group': foodGroupSelectBox.options[foodGroupSelectBox.selectedIndex].value,
           'expiration_date': e.target.expiration_date.value,
           'quantity': parseInt(e.target.quantity.value)
         }]
