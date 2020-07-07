@@ -26,10 +26,10 @@ class FoodItem {
   // returns markup for a single item of a foodItemsCard <div>
   static foodItemsCardHTML(item) {
     return `
-    <h4>${item.name}</h4>
-    <strong>Food Group: ${item.food_group} </strong><br />
-    <strong>Expiration Date: ${item.expiration_date} </strong><br />
-    <strong>Quantity: ${item.quantity} </strong><br />
+    <strong>${item.name}</strong>
+    <strong>Food Group: </strong>${item.food_group} <br />
+    <strong>Expiration Date: </strong>${item.expiration_date} <br />
+    <strong>Quantity: </strong>${item.quantity} <br />
     `
   };
 

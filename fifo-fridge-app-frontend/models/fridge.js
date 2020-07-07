@@ -28,20 +28,6 @@ class Fridge {
     fridgeCard.setAttribute("data-fridge-id", this.id);
     fridgeCard.innerHTML += this.fridgeCardHTML();
 
-    // create "food-items-container <div> for current fridgeCard"
-    // invoke FoodItem.renderFoodItems() to populate the container
-    const foodItemsContainer = document.createElement("div");
-    foodItemsContainer.setAttribute("class", "food-items-container");
-
-    // render the food items and then append to foodItemsContainer?
-    // TODO: Build FoodItem.renderFoodItems(foodItemsContainer, this.foodItems) <-- returns updated copy of foodItemsContainer with added food items
-    // renderedFoodItems = FoodItem.renderFoodItems(foodItemsContainer, this.foodItems)
-    // fridgeCard.appendChild(renderedFoodItems)
-
-    const renderedFoodItems = FoodItem.renderFoodItems(foodItemsContainer, this.foodItems);
-    fridgeCard.appendChild(renderedFoodItems);
-
-
     // create "Add Food Item" button
     // button comes with event listener that invokes API.addFoodItem() when clicked
     const addFoodItem = document.createElement('button');
@@ -84,6 +70,20 @@ class Fridge {
       API.deleteFridge(parseInt(e.target.parentElement.getAttribute('data-fridge-id')))
     });
     fridgeCard.appendChild(deleteBtn);
+
+
+    // create "food-items-container <div> for current fridgeCard"
+    // invoke FoodItem.renderFoodItems() to populate the container
+    const foodItemsContainer = document.createElement("div");
+    foodItemsContainer.setAttribute("class", "food-items-container");
+
+    // render the food items and then append to foodItemsContainer?
+    // TODO: Build FoodItem.renderFoodItems(foodItemsContainer, this.foodItems) <-- returns updated copy of foodItemsContainer with added food items
+    // renderedFoodItems = FoodItem.renderFoodItems(foodItemsContainer, this.foodItems)
+    // fridgeCard.appendChild(renderedFoodItems)
+
+    const renderedFoodItems = FoodItem.renderFoodItems(foodItemsContainer, this.foodItems);
+    fridgeCard.appendChild(renderedFoodItems);
 
 
     // finally, we append the fridgeCard to the existing fridgeContainer

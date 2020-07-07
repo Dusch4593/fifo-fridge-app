@@ -10,30 +10,32 @@
 </head>
 
 <body>
-  <h1>Welcome to FIFO Fridge!</h1>
-  <h3>Create a New Fridge</h3>
-  <form id="fridge-form">
-    <input type="text" name="name" placeholder="name" />
-    <br />
-    <input type="number" name="capacity" placeholder="capacity" min=0 />
-    <br />
-    <br />
-    <strong>Would you like to add a food item?</strong>
-    <br>
-    <input type="text" name="name" placeholder="food name" />
-    <br />
-    <input type="text" name="food_group" placeholder="food group" />
-    <br />
-    <input type="text" name="expiration_date" placeholder="expiration date (##/##/####)" />
-    <br />
-    <input type="number" name="quantity" placeholder="quantity" min=0 />
-    <br />
-    <br />
-    <input type="submit" value="Create Fridge" />
-  </form>
+  <h1 style="text-align: center;">Welcome to FIFO Fridge!</h1>
+  <div id="fridge-form-container">
+    <h3>Create a New Fridge</h3>
+    <form id="fridge-form">
+      <input type="text" name="name" placeholder="name" />
+      <br />
+      <input type="number" name="capacity" placeholder="capacity" min=0 />
+      <br />
+      <br />
+      <strong>Would you like to add a food item?</strong>
+      <br>
+      <input type="text" name="name" placeholder="food name" />
+      <br />
+      <input type="text" name="food_group" placeholder="food group" />
+      <br />
+      <input type="text" name="expiration_date" placeholder="expiration date (##/##/####)" />
+      <br />
+      <input type="number" name="quantity" placeholder="quantity" min=0 />
+      <br />
+      <br />
+      <input type="submit" value="Create Fridge" />
+    </form>
+  </div>
   <br />
   <div id="fridge-container"></div>
-  <footer>Coded with Love by Brandon Dusch in 2020</footer>
+  <footer style="text-align: center;">Coded with Love by Brandon Dusch in 2020</footer>
 </body>
 <script type="text/javascript" src="models/fridge.js" charset="UTF-8"></script>
 <script type="text/javascript" src="models/food_item.js" charset="UTF-8"></script>
