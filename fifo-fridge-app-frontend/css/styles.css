@@ -10,12 +10,37 @@ h2, h4 {
 
 input {
   background-color: #fff;
+  margin: 0.25em auto;
+  padding: 0.25em;
+  border-radius: 0.25em;
+}
+
+input[type="submit"] {
+  color: #fff;
+  background-color: #27a8f7;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  font-weight: bold;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #27a8f7;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #27a8f7;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #27a8f7;
 }
 
 #fridge-form-container {
+  background-color: #bac3e0;
   border: 1px solid black;
   text-align: center;
-  width: 30%;
+  width: 35%;
   margin: auto;
   padding: 0.5em;
 }
