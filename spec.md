@@ -9,6 +9,6 @@ Rails (backend)
 * [X] Short, single-purpose method  
 
 Git (version-control)
-* [ ] Aim for a large number of small commits - commit frequently! (min. 50)  
+* [X] Aim for a large number of small commits - commit frequently! (min. 50)  
 * [X] Add meaningful messages to your commits. When you look back at your commits with git log, the messages should describe each change.  
-* [ ] Don't include changes in a commit that aren't related to the commit message
+* [X] Don't include changes in a commit that aren't related to the commit message
