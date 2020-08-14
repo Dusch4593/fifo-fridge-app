@@ -35,7 +35,7 @@ class FoodItem {
 
   // given a foodItemsContainer and an array of item-object data,
   // this render
-  static renderFoodItems(foodItemsContainer, items) {
+  static renderFoodItems(fridgeID, foodItemsContainer, items) {
     for(let item of this.sortByDate(items)) {
       const {name, food_group, expiration_date, quantity} = item;
       let newFoodItem = new FoodItem(name, food_group, expiration_date, quantity);
@@ -50,7 +50,6 @@ class FoodItem {
       deleteBtn.setAttribute("class", "food-item-delete-btn");
 
       deleteBtn.addEventListener("click", (e) => {
-        e.preventDefault();
         API.deleteFoodItem(parseInt(e.target.parentElement.id))
       });
 
@@ -64,11 +63,11 @@ class FoodItem {
 
 
   // takes an item and fridge and adds the item to that fridge
-  static addItemToFridge(fridge, item) {
+  static addItemToFridge(fridge, fridgeCard, item) {
     const {name, food_group, expiration_date, quantity} = item;
     const newFoodItem = new FoodItem(name, food_group, expiration_date, quantity);
 
-    let foodItemsContainer = fridge.querySelector(".food-items-container");
+    let foodItemsContainer = fridgeCard.querySelector(".food-items-container");
     let foodItemCard = document.createElement('div');
     foodItemCard.setAttribute("class", "food-item-card");
 
@@ -91,9 +90,10 @@ class FoodItem {
 
     let linkBreak = document.createElement("br");
     foodItemCard.appendChild(deleteBtn);
-    foodItemsContainer.appendChild(foodItemCard);
+    fridgeCard.innerHTML = '';
+    fridge.renderFridge();
 
-    fridge.getElementsByTagName("form")[0].reset();
-    fridge.getElementsByTagName("form")[0].style.display="none";
+    fridgeCard.getElementsByTagName("form")[0].reset();
+    fridgeCard.getElementsByTagName("form")[0].style.display="none";
   };
 };

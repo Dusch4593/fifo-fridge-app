@@ -1,15 +1,25 @@
 class Fridge {
+
+  static fridgesArray = [];
+
   constructor(name, capacity=1, foodItems, id=null) {
     if(Object.keys(foodItems).length <= capacity) {
       this.id = id;
       this.name = name;
       this.capacity = capacity;
       this.foodItems = foodItems;
-      this.renderFridge();
+      Fridge.fridgesArray.push(this);
     } else {
       throw new Error("foodItems list exceded fridge's max capacity. Please try again with a shorter list.")
     };
   };
+
+
+  //  toggleLike(e) function
+  toggleLike = (e) => {
+    e.target.style.backgroundColor == "" ? e.target.style.backgroundColor="red" : e.target.style.backgroundColor = ""
+    ;
+  }
 
   // returns markup for a fridgeCard <div>
   fridgeCardHTML() {
@@ -19,6 +29,12 @@ class Fridge {
     `
   };
 
+  // iterates through Fridge.fridgesArray and renders each fridge
+  static renderFridges(fridgesArray) {
+    for(let fridge of fridgesArray) {
+      fridge.renderFridge()
+    }
+  }
 
   // sets up the container elements for the fetched Fridge (and FoodItem) data
   renderFridge() {
@@ -27,6 +43,20 @@ class Fridge {
     fridgeCard.setAttribute("class", "fridge-card");
     fridgeCard.setAttribute("data-fridge-id", this.id);
     fridgeCard.innerHTML += this.fridgeCardHTML();
+
+    // create "Like Fridge" button
+    // button listens for a click;
+    const likeFridgeBtn = document.createElement('button');
+    likeFridgeBtn.innerText = "Like!"
+    likeFridgeBtn.setAttribute("class", "like-btn");
+    likeFridgeBtn.addEventListener("click", (e) => {
+      if(e.target.className == 'like-btn') {
+        // call separate method
+        this.toggleLike(e)
+      }
+    })
+
+    fridgeCard.appendChild(likeFridgeBtn);
 
     // create "Add Food Item" button
     // button comes with event listener that invokes API.addFoodItem() when clicked
@@ -74,7 +104,6 @@ class Fridge {
     deleteBtn.innerText = "Delete";
     deleteBtn.setAttribute("class", "fridge-delete-btn");
     deleteBtn.addEventListener("click", (e) => {
-      e.preventDefault();
       API.deleteFridge(parseInt(e.target.parentElement.getAttribute('data-fridge-id')))
     });
     fridgeCard.appendChild(deleteBtn);
@@ -90,7 +119,7 @@ class Fridge {
     // renderedFoodItems = FoodItem.renderFoodItems(foodItemsContainer, this.foodItems)
     // fridgeCard.appendChild(renderedFoodItems)
 
-    const renderedFoodItems = FoodItem.renderFoodItems(foodItemsContainer, this.foodItems);
+    const renderedFoodItems = FoodItem.renderFoodItems(this.id, foodItemsContainer, this.foodItems);
     fridgeCard.appendChild(renderedFoodItems);
 
 

@@ -7,9 +7,12 @@ class API {
         for(let fridge of fridgeData) {
           const {name, capacity, food_items, id} = fridge;
           new Fridge(name, capacity, food_items, id);
-      }})
+        }
+        Fridge.renderFridges(Fridge.fridgesArray)
+      })
   };
 
+  // fetch a POST request with the submitted form data to add a new Fridge
   static addFridge(e) {
     e.preventDefault();
     let foodGroupSelectBox = e.target.getElementsByTagName("select")[0]
@@ -78,14 +81,14 @@ class API {
       })
       .then(res => res.json())
       .then(result => {
-        const currentFridge = document.getElementsByClassName('fridge-card')[result.id-1]
-        const foodItemsContainer = currentFridge.querySelector("#food-items-container");
+        const currentFridgeCard = document.getElementsByClassName('fridge-card')[result.id-1]
+        let currentFridge = Fridge.fridgesArray.find(fridge => {return fridge.id === fridgeID});
+        const foodItemsContainer = currentFridgeCard.querySelector("#food-items-container");
         let newFoodItem = result.food_items[result.food_items.length-1];
-        FoodItem.addItemToFridge(currentFridge, newFoodItem)
+
+
+        FoodItem.addItemToFridge(currentFridge, currentFridgeCard, newFoodItem)
       });
     });
-
-
-
   };
 };
